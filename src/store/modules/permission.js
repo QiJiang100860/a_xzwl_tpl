@@ -45,12 +45,24 @@ const permission = {
   actions: {
     GenerateRoutes({ commit }, data) {
       return new Promise(resolve => {
-        const { roles } = data
+        const { roles, permissionTree } = data
         let accessedRouters
         if (roles.indexOf('admin') >= 0) {
           accessedRouters = asyncRouterMap
         } else {
           accessedRouters = filterAsyncRouter(asyncRouterMap, roles)
+        }
+        // 根据后台标识过滤路由表
+        if (permissionTree === 'all') {
+          console.log('全部路由表')
+        } else {
+          for (const item of permissionTree) {
+            if (item.hasChildren) {
+              for (const citem of item.children) {
+                console.log(citem)
+              }
+            }
+          }
         }
         commit('SET_ROUTERS', accessedRouters)
         resolve()
