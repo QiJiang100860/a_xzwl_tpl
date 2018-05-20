@@ -7,7 +7,7 @@ const _import = require('./_import_' + process.env.NODE_ENV)
 Vue.use(Router)
 
 /* Layout */
-import Layout from '../views/layout/Layout'
+import Layout from '../views_new/layout/Layout'
 
 /** note: submenu only apppear when children.length>=1
 *   detail see  https://panjiachen.github.io/vue-element-admin-site/#/router-and-nav?id=sidebar
@@ -51,163 +51,152 @@ export default new Router({
 })
 
 export const asyncRouterMap = [
-  // 账号管理-权限分配
+  // 系统管理
   {
-    path: '/permission_management',
+    path: '/system',
     component: Layout,
-    redirect: '/permission_management/index',
-    alwaysShow: true,
+    redirect: '/system/permission',
     meta: {
-      title: '权限管理',
+      title: '系统管理',
       icon: 'lock'
     },
-    children: [{
-      path: 'index',
-      component: _import('permission_management/index'),
-      name: 'permission_management',
-      meta: {
-        title: '权限分配'
-      }
-    }]
+    children: [
+      { path: 'permission', component: _import('system/permission'), name: 'permission', meta: { title: '系统权限' }},
+      { path: 'roles', component: _import('system/roles'), name: 'roles', meta: { title: '系统角色' }},
+      { path: 'user', component: _import('system/user'), name: 'user', meta: { title: '系统用户' }},
+      { path: 'param', component: _import('system/param'), name: 'param', meta: { title: '系统参数' }}
+    ]
   },
-  // 内容管理
+  // 单位管理
   {
-    path: '/page_management',
+    path: '/department',
     component: Layout,
-    redirect: '/page_management/index',
+    redirect: '/department/index',
     meta: {
-      title: '内容管理',
+      title: '单位管理',
       icon: 'chart'
     },
     children: [
-      { path: 'page_column', component: _import('page_management/page_column'), name: 'page_column', meta: { title: '栏目管理' }},
-      { path: 'page_add', component: _import('page_management/page_add'), name: 'page_add', meta: { title: '内容添加' }},
-      { path: 'index', component: _import('page_management/index'), name: 'page_management', meta: { title: '内容管理' }},
-      { path: 'page_custom', component: _import('page_management/page_custom'), name: 'page_custom', meta: { title: '分类管理自定义' }}
+      { path: 'index', component: _import('department/index'), name: 'index', meta: { title: '部门管理' }},
+      { path: 'personnel', component: _import('department/personnel'), name: 'personnel', meta: { title: '员工管理' }}
     ]
   },
-  // 通知消息模块
-  {
-    path: '/message',
-    component: Layout,
-    redirect: '/message/index',
-    meta: {
-      title: '通知消息',
-      icon: 'chart'
-    },
-    children: [
-      { path: 'index', component: _import('message/index'), name: 'message', meta: { title: '发布通知' }},
-      { path: 'message_operation', component: _import('message/message_operation'), name: 'message_operation', meta: { title: '操作' }},
-      { path: 'message_infro', component: _import('message/message_infro'), name: 'message_infro', meta: { title: '消息', roles: ['admin'] }}
-    ]
-  },
-  // 报修模块
-  {
-    path: '/repair',
-    component: Layout,
-    redirect: '/repair/repair_people',
-    meta: {
-      title: '报修',
-      icon: 'chart'
-    },
-    children: [
-      { path: 'repair_people', component: _import('repair/repair_people'), name: 'repair_people', meta: { title: '维修人员' }},
-      { path: 'repair_list', component: _import('repair/repair_list'), name: 'repair_list', meta: { title: '维修单列表' }},
-      { path: 'repair_state', component: _import('repair/repair_state'), name: 'repair_state', meta: { title: '维修人员派遣状态' }},
-      { path: 'repair_evaluate', component: _import('repair/repair_evaluate'), name: 'repair_evaluate', meta: { title: '维修单信息评价列表' }},
-      { path: 'repair_seach', component: _import('repair/repair_seach'), name: 'repair_seach', meta: { title: '维修单查询' }}
-    ]
-  },
-  // 会议室管理
+  // 会议管理
   {
     path: '/meeting',
     component: Layout,
-    redirect: '/meeting/meeting_infro',
+    redirect: '/meeting/list',
     meta: {
-      title: '会议室管理',
+      title: '会议管理',
       icon: 'chart'
     },
     children: [
-      { path: 'meeting_infro', component: _import('meeting/meeting_infro'), name: 'meeting_infro', meta: { title: '基本信息管理' }},
-      { path: 'meeting_occupy', component: _import('meeting/meeting_occupy'), name: 'meeting_occupy', meta: { title: '占用情况' }},
-      { path: 'meeting_forward', component: _import('meeting/meeting_forward'), name: 'meeting_forward', meta: { title: '使用批准信息转发' }},
-      { path: 'meeting_print', component: _import('meeting/meeting_print'), name: 'meeting_print', meta: { title: '请单按格式打印' }},
-      { path: 'meeting_apply', component: _import('meeting/meeting_apply'), name: 'meeting_apply', meta: { title: '申请列表' }},
-      { path: 'meeting_count', component: _import('meeting/meeting_count'), name: 'meeting_count', meta: { title: '会议信息统计' }}
+      { path: 'list', component: _import('meeting/list'), name: 'list', meta: { title: '会议列表' }},
+      { path: 'order', component: _import('meeting/order'), name: 'order', meta: { title: '会议订单' }},
+      { path: 'reason', component: _import('meeting/reason'), name: 'reason', meta: { title: '预约事由' }}
     ]
   },
-  // 新闻管理
+  // 访客管理
   {
-    path: '/news',
+    path: '/visitor',
     component: Layout,
-    redirect: '/news/news_list',
+    redirect: '/visitor/index',
     meta: {
-      title: '新闻管理',
+      title: '访客管理',
       icon: 'chart'
     },
     children: [
-      { path: 'news_list', component: _import('news/news_list'), name: 'news_list', meta: { title: '新闻列表' }},
-      { path: 'news_classify', component: _import('news/news_classify'), name: 'news_classify', meta: { title: '新闻分类列表' }},
-      { path: 'news_editor', component: _import('news/news_editor'), name: 'news_editor', meta: { title: '新闻编辑发布' }}
+      { path: 'list', component: _import('visitor/list'), name: 'list', meta: { title: '访客列表' }},
+      { path: 'reason', component: _import('visitor/reason'), name: 'reason', meta: { title: '访客事由' }}
+    ]
+  },
+  // 报修管理
+  {
+    path: '/repair',
+    component: Layout,
+    redirect: '/repair/workerList',
+    meta: {
+      title: '报修管理',
+      icon: 'chart'
+    },
+    children: [
+      { path: 'workerList', component: _import('repair/workerList'), name: 'workerList', meta: { title: '维修工列表' }},
+      { path: 'orderList', component: _import('repair/orderList'), name: 'orderList', meta: { title: '维修单列表' }},
+      { path: 'reason', component: _import('repair/reason'), name: 'reason', meta: { title: '维修事由' }}
+    ]
+  },
+  // 车辆管理
+  {
+    path: '/car',
+    component: Layout,
+    redirect: '/car/brandList',
+    meta: {
+      title: '车辆管理',
+      icon: 'chart'
+    },
+    children: [
+      { path: 'brandList', component: _import('car/brandList'), name: 'brandList', meta: { title: '品牌列表' }},
+      { path: 'seriesList', component: _import('car/seriesList'), name: 'seriesList', meta: { title: '车系列表' }},
+      { path: 'yearList', component: _import('car/yearList'), name: 'yearList', meta: { title: '年代列表' }},
+      { path: 'carList', component: _import('car/carList'), name: 'carList', meta: { title: '车辆列表' }},
+      { path: 'useCarList', component: _import('car/useCarList'), name: 'useCarList', meta: { title: '用车订单' }},
+      { path: 'useCarReason', component: _import('car/useCarReason'), name: 'useCarReason', meta: { title: '用车事由' }}
     ]
   },
   // 智慧餐厅
   {
-    path: '/cookroom',
+    path: '/restaurant',
     component: Layout,
-    redirect: '/cookroom/cookroom_brief',
+    redirect: '/restaurant/foodList',
     meta: {
       title: '智慧餐厅',
       icon: 'chart'
     },
     children: [
-      { path: 'cookroom_brief', component: _import('cookroom/cookroom_brief'), name: 'cookroom_brief', meta: { title: '餐厅介绍' }},
-      { path: 'cookroom_list', component: _import('cookroom/cookroom_list'), name: 'cookroom_list', meta: { title: '美食列表' }},
-      { path: 'cookroom_details', component: _import('cookroom/cookroom_details'), name: 'cookroom_details', meta: { title: '美食详情' }}
+      { path: 'foodList', component: _import('restaurant/foodList'), name: 'foodList', meta: { title: '菜品列表' }},
+      { path: 'dayFood', component: _import('restaurant/dayFood'), name: 'dayFood', meta: { title: '每日菜单' }}
     ]
   },
-  // 访客预约
+  // 内容管理
   {
-    path: '/visit',
+    path: '/content',
     component: Layout,
-    redirect: '/visit/visit_reason',
+    redirect: '/content/index',
+    alwaysShow: true,
     meta: {
-      title: '访客预约',
+      title: '内容管理',
       icon: 'chart'
     },
     children: [
-      { path: 'visit_reason', component: _import('visit/visit_reason'), name: 'visit_reason', meta: { title: '访客事由' }},
-      { path: 'visit_list', component: _import('visit/visit_list'), name: 'visit_list', meta: { title: '访客列表' }},
-      { path: 'visit_count', component: _import('visit/visit_count'), name: 'visit_count', meta: { title: '访客统计' }}
+      { path: 'index', component: _import('content/index'), name: 'index', meta: { title: '内容管理' }}
     ]
   },
-  // 用车申请
+  // 消息管理
   {
-    path: '/car',
+    path: '/message',
     component: Layout,
-    redirect: '/car/car_infro',
+    redirect: '/message/list',
     meta: {
-      title: '用车申请',
+      title: '消息管理',
       icon: 'chart'
     },
     children: [
-      { path: 'car_infro', component: _import('car/car_infro'), name: 'car_infro', meta: { title: '车辆维护信息' }},
-      { path: 'car_list', component: _import('car/car_list'), name: 'car_list', meta: { title: '车辆列表' }},
-      { path: 'car_apply', component: _import('car/car_apply'), name: 'car_apply', meta: { title: '车辆申请' }}
+      { path: 'list', component: _import('message/list'), name: 'list', meta: { title: '消息列表' }},
+      { path: 'publish', component: _import('message/publish'), name: 'publish', meta: { title: '发布管理' }}
     ]
   },
-  // banner图
+  // 运营管理
   {
-    path: '/banner',
+    path: '/operate',
     component: Layout,
-    redirect: '/banner/banner_upload',
+    redirect: '/operate/startPage',
     meta: {
-      title: 'banner管理',
+      title: '运营管理',
       icon: 'chart'
     },
     children: [
-      { path: 'banner_upload', component: _import('banner/banner_upload'), name: 'banner_upload', meta: { title: '图片上传' }},
-      { path: 'banner_details', component: _import('banner/banner_details'), name: 'banner_details', meta: { title: '详情管理' }}
+      { path: 'startPage', component: _import('operate/startPage'), name: 'startPage', meta: { title: '启动页管理' }},
+      { path: 'feedback', component: _import('operate/feedback'), name: 'feedback', meta: { title: '意见反馈' }}
     ]
   },
   { path: '*', redirect: '/404', hidden: true }
