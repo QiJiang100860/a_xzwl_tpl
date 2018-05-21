@@ -25,4 +25,27 @@
 //   -webkit-font-smoothing: antialiased;
 //   -moz-osx-font-smoothing: grayscale;
 // }
+
+.model-container{
+  box-sizing: border-box;
+  padding: 14px;
+  .el-card{
+    box-shadow: none;
+    &:first-child{
+      margin-bottom: 10px;
+    }
+    .el-card__header{
+      padding: 12px 20px;
+      font-size: 14px;
+      color: #666;
+      font-weight: bold;
+      .iconfont{
+        font-size: 18px;
+        vertical-align: -2px;
+        color: #666;
+        margin-right: 4px;
+      }
+    } 
+  }
+}
 </style>

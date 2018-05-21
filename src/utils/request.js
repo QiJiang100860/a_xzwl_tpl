@@ -8,7 +8,6 @@ const service = axios.create({
   baseURL: process.env.BASE_API, // api的base_url
   timeout: 5000 // request timeout
 })
-
 // request interceptor
 service.interceptors.request.use(config => {
   // Do something before request is sent

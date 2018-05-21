@@ -14,9 +14,7 @@ export default {
       isFullscreen: true
     }
   },
-  mounted: function() {
-    this.screeChange()
-  },
+  mounted: function() {},
   methods: {
     click() {
       this.isFullscreen = screenfull.isFullscreen
@@ -29,12 +27,7 @@ export default {
       }
       screenfull.toggle()
     },
-    screeChange() {
-      debugger
-      document.addEventListener(screenfull.raw.fullscreenchange, () => {
-        console.log('Am I fullscreen? ' + (screenfull.isFullscreen ? 'Yes' : 'No'))
-      })
-    }
+    screeChange() {}
   }
 }
 </script>
