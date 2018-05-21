@@ -13,22 +13,11 @@ const userMap = {
     roles: ['editor'],
     permissionTree: [
       {
-        path: '/page_management',
-        hasChildren: 1,
-        children: [
-          { path: 'page_column' },
-          { path: 'page_add' },
-          { path: 'index' },
-          { path: 'page_custom' }
-        ]
-      },
-      {
         path: '/message',
         hasChildren: 1,
         children: [
-          { path: 'message_publish' },
-          { path: 'message_operation' },
-          { path: 'message_infro' }
+          { path: 'list' },
+          { path: 'publish' }
         ]
       }
     ],

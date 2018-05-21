@@ -39,7 +39,7 @@ export const constantRouterMap = [
       path: 'dashboard',
       component: _import('dashboard/index'),
       name: 'dashboard',
-      meta: { title: '首页', icon: 'dashboard', noCache: true }
+      meta: { title: '首页', icon: 'shouye', noCache: true }
     }]
   }
 ]
@@ -58,13 +58,13 @@ export const asyncRouterMap = [
     redirect: '/system/permission',
     meta: {
       title: '系统管理',
-      icon: 'lock'
+      icon: 'navicon-xtgl'
     },
     children: [
-      { path: 'permission', component: _import('system/permission'), name: 'permission', meta: { title: '系统权限' }},
-      { path: 'roles', component: _import('system/roles'), name: 'roles', meta: { title: '系统角色' }},
-      { path: 'user', component: _import('system/user'), name: 'user', meta: { title: '系统用户' }},
-      { path: 'param', component: _import('system/param'), name: 'param', meta: { title: '系统参数' }}
+      { path: 'permission', component: _import('system/permission'), name: 'system_permission', meta: { title: '系统权限' }},
+      { path: 'roles', component: _import('system/roles'), name: 'system_roles', meta: { title: '系统角色' }},
+      { path: 'user', component: _import('system/user'), name: 'system_user', meta: { title: '系统用户' }},
+      { path: 'param', component: _import('system/param'), name: 'system_param', meta: { title: '系统参数' }}
     ]
   },
   // 单位管理
@@ -74,11 +74,11 @@ export const asyncRouterMap = [
     redirect: '/department/index',
     meta: {
       title: '单位管理',
-      icon: 'chart'
+      icon: 'commpany'
     },
     children: [
-      { path: 'index', component: _import('department/index'), name: 'index', meta: { title: '部门管理' }},
-      { path: 'personnel', component: _import('department/personnel'), name: 'personnel', meta: { title: '员工管理' }}
+      { path: 'index', component: _import('department/index'), name: 'department_index', meta: { title: '部门管理' }},
+      { path: 'personnel', component: _import('department/personnel'), name: 'department_personnel', meta: { title: '员工管理' }}
     ]
   },
   // 会议管理
@@ -88,12 +88,12 @@ export const asyncRouterMap = [
     redirect: '/meeting/list',
     meta: {
       title: '会议管理',
-      icon: 'chart'
+      icon: 'huiyishi'
     },
     children: [
-      { path: 'list', component: _import('meeting/list'), name: 'list', meta: { title: '会议列表' }},
-      { path: 'order', component: _import('meeting/order'), name: 'order', meta: { title: '会议订单' }},
-      { path: 'reason', component: _import('meeting/reason'), name: 'reason', meta: { title: '预约事由' }}
+      { path: 'list', component: _import('meeting/list'), name: 'meeting_list', meta: { title: '会议列表' }},
+      { path: 'order', component: _import('meeting/order'), name: 'meeting_order', meta: { title: '会议订单' }},
+      { path: 'reason', component: _import('meeting/reason'), name: 'meeting_reason', meta: { title: '预约事由' }}
     ]
   },
   // 访客管理
@@ -103,11 +103,11 @@ export const asyncRouterMap = [
     redirect: '/visitor/index',
     meta: {
       title: '访客管理',
-      icon: 'chart'
+      icon: 'fangkeshuxing'
     },
     children: [
-      { path: 'list', component: _import('visitor/list'), name: 'list', meta: { title: '访客列表' }},
-      { path: 'reason', component: _import('visitor/reason'), name: 'reason', meta: { title: '访客事由' }}
+      { path: 'list', component: _import('visitor/list'), name: 'visitor_list', meta: { title: '访客列表' }},
+      { path: 'reason', component: _import('visitor/reason'), name: 'visitor_reason', meta: { title: '访客事由' }}
     ]
   },
   // 报修管理
@@ -117,12 +117,12 @@ export const asyncRouterMap = [
     redirect: '/repair/workerList',
     meta: {
       title: '报修管理',
-      icon: 'chart'
+      icon: 'baoxiu'
     },
     children: [
-      { path: 'workerList', component: _import('repair/workerList'), name: 'workerList', meta: { title: '维修工列表' }},
-      { path: 'orderList', component: _import('repair/orderList'), name: 'orderList', meta: { title: '维修单列表' }},
-      { path: 'reason', component: _import('repair/reason'), name: 'reason', meta: { title: '维修事由' }}
+      { path: 'workerList', component: _import('repair/workerList'), name: 'repair_workerList', meta: { title: '维修工列表' }},
+      { path: 'orderList', component: _import('repair/orderList'), name: 'repair_orderList', meta: { title: '维修单列表' }},
+      { path: 'reason', component: _import('repair/reason'), name: 'repair_reason', meta: { title: '维修事由' }}
     ]
   },
   // 车辆管理
@@ -132,15 +132,15 @@ export const asyncRouterMap = [
     redirect: '/car/brandList',
     meta: {
       title: '车辆管理',
-      icon: 'chart'
+      icon: 'cheliang'
     },
     children: [
-      { path: 'brandList', component: _import('car/brandList'), name: 'brandList', meta: { title: '品牌列表' }},
-      { path: 'seriesList', component: _import('car/seriesList'), name: 'seriesList', meta: { title: '车系列表' }},
-      { path: 'yearList', component: _import('car/yearList'), name: 'yearList', meta: { title: '年代列表' }},
-      { path: 'carList', component: _import('car/carList'), name: 'carList', meta: { title: '车辆列表' }},
-      { path: 'useCarList', component: _import('car/useCarList'), name: 'useCarList', meta: { title: '用车订单' }},
-      { path: 'useCarReason', component: _import('car/useCarReason'), name: 'useCarReason', meta: { title: '用车事由' }}
+      { path: 'brandList', component: _import('car/brandList'), name: 'car_brandList', meta: { title: '品牌列表' }},
+      { path: 'seriesList', component: _import('car/seriesList'), name: 'car_seriesList', meta: { title: '车系列表' }},
+      { path: 'yearList', component: _import('car/yearList'), name: 'car_yearList', meta: { title: '年代列表' }},
+      { path: 'carList', component: _import('car/carList'), name: 'car_carList', meta: { title: '车辆列表' }},
+      { path: 'useCarList', component: _import('car/useCarList'), name: 'car_useCarList', meta: { title: '用车订单' }},
+      { path: 'useCarReason', component: _import('car/useCarReason'), name: 'car_useCarReason', meta: { title: '用车事由' }}
     ]
   },
   // 智慧餐厅
@@ -150,11 +150,11 @@ export const asyncRouterMap = [
     redirect: '/restaurant/foodList',
     meta: {
       title: '智慧餐厅',
-      icon: 'chart'
+      icon: 'cantingxinxi'
     },
     children: [
-      { path: 'foodList', component: _import('restaurant/foodList'), name: 'foodList', meta: { title: '菜品列表' }},
-      { path: 'dayFood', component: _import('restaurant/dayFood'), name: 'dayFood', meta: { title: '每日菜单' }}
+      { path: 'foodList', component: _import('restaurant/foodList'), name: 'restaurant_foodList', meta: { title: '菜品列表' }},
+      { path: 'dayFood', component: _import('restaurant/dayFood'), name: 'restaurant_dayFood', meta: { title: '每日菜单' }}
     ]
   },
   // 内容管理
@@ -165,10 +165,10 @@ export const asyncRouterMap = [
     alwaysShow: true,
     meta: {
       title: '内容管理',
-      icon: 'chart'
+      icon: 'neirongwendang'
     },
     children: [
-      { path: 'index', component: _import('content/index'), name: 'index', meta: { title: '内容管理' }}
+      { path: 'index', component: _import('content/index'), name: 'content_index', meta: { title: '内容管理' }}
     ]
   },
   // 消息管理
@@ -178,11 +178,11 @@ export const asyncRouterMap = [
     redirect: '/message/list',
     meta: {
       title: '消息管理',
-      icon: 'chart'
+      icon: 'xiaoxi'
     },
     children: [
-      { path: 'list', component: _import('message/list'), name: 'list', meta: { title: '消息列表' }},
-      { path: 'publish', component: _import('message/publish'), name: 'publish', meta: { title: '发布管理' }}
+      { path: 'list', component: _import('message/list'), name: 'message_list', meta: { title: '消息列表' }},
+      { path: 'publish', component: _import('message/publish'), name: 'message_publish', meta: { title: '发布管理' }}
     ]
   },
   // 运营管理
@@ -192,11 +192,11 @@ export const asyncRouterMap = [
     redirect: '/operate/startPage',
     meta: {
       title: '运营管理',
-      icon: 'chart'
+      icon: 'yunying'
     },
     children: [
-      { path: 'startPage', component: _import('operate/startPage'), name: 'startPage', meta: { title: '启动页管理' }},
-      { path: 'feedback', component: _import('operate/feedback'), name: 'feedback', meta: { title: '意见反馈' }}
+      { path: 'startPage', component: _import('operate/startPage'), name: 'operate_startPage', meta: { title: '启动页管理' }},
+      { path: 'feedback', component: _import('operate/feedback'), name: 'operate_feedback', meta: { title: '意见反馈' }}
     ]
   },
   { path: '*', redirect: '/404', hidden: true }

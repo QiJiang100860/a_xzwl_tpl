@@ -5,36 +5,45 @@
     <breadcrumb class="breadcrumb-container"></breadcrumb>
 
     <div class="right-menu">
-      <error-log class="errLog-container right-menu-item"></error-log>
-
-      <el-tooltip effect="dark" :content="$t('navbar.screenfull')" placement="bottom">
-        <screenfull class="screenfull right-menu-item"></screenfull>
-      </el-tooltip>
-
       <!-- <lang-select class="international right-menu-item"></lang-select>
 
       <el-tooltip effect="dark" :content="$t('navbar.theme')" placement="bottom">
         <theme-picker class="theme-switch right-menu-item"></theme-picker>
       </el-tooltip> -->
-
-      <el-dropdown class="avatar-container right-menu-item" trigger="click">
-        <div class="avatar-wrapper">
-          <img class="user-avatar" :src="avatar+'?imageView2/1/w/80/h/80'">
-          <i class="el-icon-caret-bottom"></i>
-        </div>
+      <div class="user-infro right-menu-item">
+          <!-- <img class="user-avatar" :src="avatar+'?imageView2/1/w/80/h/80'">
+          <i class="el-icon-caret-bottom"></i> -->
+          <i class="iconfont user-icon icon-yonghu"></i>
+          <span class="user-name">欧阳娜娜</span>
+          <span class="user-branch">车管科</span>
+      </div>
+      <!-- <el-dropdown class="avatar-container right-menu-item" trigger="hover">
+        
         <el-dropdown-menu slot="dropdown">
           <router-link to="/">
             <el-dropdown-item>
               首页
             </el-dropdown-item>
           </router-link>
-          <a target='_blank' href="https://github.com/PanJiaChen/vue-element-admin/">
-            <el-dropdown-item>
-              个人中心
-            </el-dropdown-item>
-          </a>
           <el-dropdown-item divided>
             <span @click="logout" style="display:block;">退出</span>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown> -->
+
+      <el-tooltip effect="dark" content="全屏" placement="bottom">
+        <screenfull class="screenfull right-menu-item"></screenfull>
+      </el-tooltip>
+
+
+      <el-dropdown class="setting-wrapper right-menu-item" trigger="hover">
+        <div class="setting-icon-wrapper"><i class="iconfont icon-shezhi"></i></div>
+        <el-dropdown-menu slot="dropdown">
+          <router-link to="/">
+            <el-dropdown-item><i class="iconfont icon-shouye" style="margin-right:5px;"></i>首页</el-dropdown-item>
+          </router-link>
+          <el-dropdown-item divided>
+            <span @click="logout" style="display:block;"><i class="iconfont icon-tuichu1" style="margin-right:5px;"></i>退出</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -100,43 +109,60 @@ export default {
   }
   .right-menu {
     float: right;
-    height: 100%;
     &:focus{
      outline: none;
     }
     .right-menu-item {
-      display: inline-block;
-      margin: 0 8px;
+      float: left;
+      margin-right: 15px;
     }
     .screenfull {
-      height: 20px;
+      
     }
-    .international{
-      vertical-align: top;
-    }
-    .theme-switch {
-      vertical-align: 15px;
-    }
-    .avatar-container {
-      height: 50px;
-      margin-right: 30px;
-      .avatar-wrapper {
+    .user-infro {
         cursor: pointer;
-        margin-top: 5px;
         position: relative;
-        .user-avatar {
-          width: 40px;
-          height: 40px;
-          border-radius: 10px;
+        height: 50px;
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
+        .user-icon{
+          font-size: 20px;
+          border: solid 1px #999;
+          border-radius: 50%;
+          color: #999;
+          padding: 5px;
         }
-        .el-icon-caret-bottom {
-          position: absolute;
-          right: -20px;
-          top: 25px;
-          font-size: 12px;
+        .user-name{
+          position: relative;
+          top: -2px;
+          font-size: 14px;
+          color:#666;
+        }
+        .user-branch{
+          position: relative;
+          top: -3px;
+          background: #ff0000;
+          color: #fff;
+          padding: 4px 8px;
+          border-radius: 20px;
+          font-size: 12px
         }
       }
-    }
+      .setting-wrapper{
+        height: 30px;
+        .setting-icon-wrapper{
+          i{
+            font-size: 20px;
+            color: #999;
+            cursor: pointer;
+            &:hover{
+              color: #333;
+            }
+          }
+        }
+      }
   }
 }
 </style>
